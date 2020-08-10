@@ -10,22 +10,15 @@
       <div class="container-fluid">
         <!-- Bread Crumbs -->
         <app-breadcumbs></app-breadcumbs>
+
         <!-- Sistema de Rutas -->
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        <router-outlet></router-outlet>
-                    </div>
-                </div>
-            </div>
-        </div>
-      <!-- Footer -->
-      <footer class="footer">
-          © 2020 Admin Pro by wrappixel.com
-      </footer>
-      <!-- End footer -->
-  
+        <router-outlet></router-outlet>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            © 2020 Admin Pro by wrappixel.com
+        </footer>
+        <!-- End footer -->
       </div>
     </div>
   </div>
