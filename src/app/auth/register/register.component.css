@@ -48,4 +48,38 @@ Login register and recover password Page
       right: 0px;
       position: absolute;
       height: 100%; }
-  
+
+.card-alert {
+  margin: 40px 20px;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(.2, 1.2, .5, 1) !important;
+}
+.text-mWidht {
+  max-width: 50%;
+}
+.alertPerDanger {
+  background-color: #ff666640;
+  padding: 20px 40px 20px 20px;
+  border-radius: 10px 0px 40px 0px;
+}
+.alertPerWarning {
+  background-color: #ffd66630;
+  padding: 20px 40px 20px 20px;
+  border-radius: 10px 0px 40px 0px;
+}
+.alertPerPerhaps {
+  background-color: #66e0ff40;
+  padding: 20px 40px 20px 20px;
+  border-radius: 10px 0px 40px 0px;
+}
+.delay20 {
+  animation-delay: 0.2s;
+}
+.delay40 {
+  animation-delay: 0.4s;
+}
+.icon {
+  padding-right: 10px;
+  padding-bottom: 5px;
+  max-width: 32px;
+}
