@@ -8,13 +8,19 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="user-profile">
-                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><img src="./assets/images/users/profile.png" alt="user" /><span class="hide-menu">Steave Jobs </span></a>
+                    <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false">
+                        <img [src]="usuario.imagenUrl">
+                        <span class="hide-menu">{{usuario.nombre}}</span>
+                    </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="javascript:void()">My Profile </a></li>
-                        <li><a href="javascript:void()">My Balance</a></li>
-                        <li><a href="javascript:void()">Inbox</a></li>
-                        <li><a routerLink="/dashboard/accountSettings">Account Settings</a></li>
-                        <li><a routerLink="/login">Logout</a></li>
+                        <li><a routerLinkActive="active" routerLink="/dashboard/profile">My Profile </a></li>
+                        <li><a routerLinkActive="active" routerLink="/dashboard/accountSettings">Account Settings</a></li>
+                        <li>
+                            <a routerLink="/login" style="color: rgba(255, 130, 130, 0.85);">
+                                <i class="fa fa-power-off"></i> 
+                                <span style="padding-left: 10px;">Logout</span>
+                            </a>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>

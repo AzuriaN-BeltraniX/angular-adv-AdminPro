@@ -1,0 +1,52 @@
+#files {
+    background-color: rgb(220, 220, 220);
+}
+.files {
+    display: inline;
+    align-items: center;
+    background-color: rgb(220, 220, 220);
+    margin-right: 10px;
+    padding: .55rem .75rem;
+    border-radius: .25rem;
+    font-weight: 400;
+    cursor: pointer;
+    transition: ease .15s;
+}
+.files:hover {
+    background-color: #00c2b8a4;
+    color: white;
+    font-weight: 400;
+}
+.files:active {
+    background-color: #05aaa2bd;
+}
+.icon {
+    max-width: 15px;
+    margin-right: 10px;
+    margin-bottom: 2px;
+}
+
+.imagenSeleccionada {
+    background-color: rgba(255, 206, 133, 0.25);
+    padding: 10px;
+    margin: 20px;
+    border-radius: .25rem;
+    text-align: center;
+    color: rgba(126, 126, 126, 0.5);
+    font-weight: 400;
+}
+.imagenSeleccionada p {
+    padding: 0;
+    margin: 0;
+}
+.imagenSeleccionada span {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.avatar {
+    display: flex;
+    margin: auto;
+    width: 300px;
+    border-radius: 20px;
+}

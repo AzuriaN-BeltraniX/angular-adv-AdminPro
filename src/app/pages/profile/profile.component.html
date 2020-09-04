@@ -1,0 +1,83 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">My Profile</h4>
+                <h6 class="card-subtitle">Settings</h6>
+                <form class="form p-t-20" [formGroup]="profileForm" (submit)="actualizarPerfil()">
+                    <div class="form-group">
+                        <label for="exampleInputuname">User</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input  type="text"
+                                    class="form-control"
+                                    id="exampleInputuname"
+                                    placeholder="{{usuario.nombre}}"
+                                    formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="ti-email"></i>
+                            </div>
+                            <input  type="email"
+                                    class="form-control"
+                                    id="exampleInutEmail1"
+                                    placeholder="{{usuario.email}}"
+                                    formControlName="email"
+                                    [readOnly]="usuario.google">
+                        </div>
+                    </div>
+                    <button type="submit"
+                            class="btn btn-success waves-effect waves-light m-r-10"
+                            [disabled]="profileForm.invalid">
+                        <i class="fa fa-save"></i>
+                        <span style="padding-left: 12px;">Change settings</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar Profile</h4>
+                <h6 class="card-subtitle">Image:</h6>
+
+                <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="avatar">
+                <img *ngIf="imgTemp" [src]="imgTemp" class="avatar">
+                <br>
+                
+                <div class="row">
+                    <div class="col" style="align-items: center;">
+                        <div class="imagenSeleccionada">
+                            <p>File: <span>{{hayImagen()}}</span></p>
+                        </div>
+
+                        <div style="justify-items: center;">
+                            <label for="files" class="files">
+                                <img src="../../../assets/icons/search.svg" class="icon">
+                                Select file
+                            </label>
+                            <input  type="file"
+                                    id="files"
+                                    (change)="subirImagen($event.target.files[0])"
+                                    style="display: none;"/>
+    
+                            <button type="button"
+                                    class="btn btn-success waves-effect waves-light m-r-10"
+                                    [disabled]="!imagenSubir"
+                                    (click)="uploadAvatar()">
+                                <i class="fa fa-save"></i>
+                                <span style="padding-left: 12px;">Upload image</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

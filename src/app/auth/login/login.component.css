@@ -56,3 +56,25 @@ Login register and recover password Page
   text-align: center;
   margin: 20px;
 }
+
+.card-alert {
+  margin: 40px 20px;
+  animation-duration: 1s;
+  animation-timing-function: cubic-bezier(.2, 1.2, .5, 1) !important;
+}
+.text-mWidht {
+  max-width: 50%;
+}
+.alertPerPerhaps {
+  background-color: #66e0ff40;
+  padding: 20px 40px 20px 20px;
+  border-radius: 10px 0px 40px 0px;
+}
+.delay20 {
+  animation-delay: 0.2s;
+}
+.icon {
+  padding-right: 10px;
+  padding-bottom: 5px;
+  max-width: 32px;
+}
