@@ -6,7 +6,6 @@ import { FileUploadsService } from '../../services/file-uploads.service';
 
 import { Usuario } from 'src/app/models/usuario.model';
 import Swal from 'sweetalert2';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-profile',
@@ -31,7 +30,10 @@ export class ProfileComponent implements OnInit {
     this.profileForm = this.formBuilder.group({
       nombre: ['', Validators.required],
       email: [this.usuario.email, [Validators.required, Validators.email]],
+      role: [this.usuario.role],
     });
+    console.log(this.profileForm);
+    
   }
 
   actualizarPerfil() {
@@ -58,7 +60,7 @@ export class ProfileComponent implements OnInit {
           position: 'center',
           icon: 'error',
           title: 'Oh no...',
-          text: err.error.msg,
+          text: err.error,
           showConfirmButton: false,
           timer: 1750
         });
@@ -79,7 +81,7 @@ export class ProfileComponent implements OnInit {
 
     reader.onloadend = () => {
       this.imgTemp = reader.result;
-      console.log(reader.result);
+      // console.log(reader.result);
     }
   }
 

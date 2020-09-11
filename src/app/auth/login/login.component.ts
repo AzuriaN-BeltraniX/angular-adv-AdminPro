@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   public loginForm = this.formBuilder.group({
     email: [localStorage.getItem('email') || '', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(8)]],
-    remember:[false]
+    remember:[localStorage.getItem('remember') || false]
   });
 
   constructor(private formBuilder: FormBuilder,
@@ -43,8 +43,10 @@ export class LoginComponent implements OnInit {
         // Si el ususario desea recordar su email, entonces:
         if (this.loginForm.get('remember').value) {
           localStorage.setItem('email', this.loginForm.get('email').value);
+          localStorage.setItem('remember', this.loginForm.get('remember').value);
         } else { // Si no, entonces
           localStorage.removeItem('email');
+          localStorage.removeItem('remember');
         }
 
         // Navega a la página principal:

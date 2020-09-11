@@ -4,9 +4,7 @@ import { Usuario } from '../../models/usuario.model';
 
 @Component({
   selector: 'app-header',
-  templateUrl: './header.component.html',
-  styles: [
-  ]
+  templateUrl: './header.component.html'
 })
 export class HeaderComponent {
 
@@ -18,6 +16,11 @@ export class HeaderComponent {
 
   logout() {
     this.usuarioService.logout();
+    console.log('funciona');
+  }
+
+  removeToken() {
+    localStorage.removeItem('token');
   }
 
 }

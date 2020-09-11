@@ -4,7 +4,8 @@
             <div class="card-body">
                 <h4 class="card-title">My Profile</h4>
                 <h6 class="card-subtitle">Settings</h6>
-                <form class="form p-t-20" [formGroup]="profileForm" (submit)="actualizarPerfil()">
+                <hr style="max-width: 90%;">
+                <form class="form" [formGroup]="profileForm" (submit)="actualizarPerfil()">
                     <div class="form-group">
                         <label for="exampleInputuname">User</label>
                         <div class="input-group">
@@ -30,12 +31,14 @@
                                     [readOnly]="usuario.google">
                         </div>
                     </div>
-                    <button type="submit"
-                            class="btn btn-success waves-effect waves-light m-r-10"
-                            [disabled]="profileForm.invalid">
-                        <i class="fa fa-save"></i>
-                        <span style="padding-left: 12px;">Change settings</span>
-                    </button>
+                    <div class="text-right">
+                        <button type="submit"
+                                class="btn btn-success waves-effect waves-light m-r-10"
+                                [disabled]="profileForm.invalid">
+                            <i class="fa fa-save"></i>
+                            <span style="padding-left: 12px;">Change settings</span>
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -46,16 +49,17 @@
             <div class="card-body">
                 <h4 class="card-title">Avatar Profile</h4>
                 <h6 class="card-subtitle">Image:</h6>
+                <hr class="text-right" style="max-width: 90%;">
 
                 <img *ngIf="!imgTemp" [src]="usuario.imagenUrl" class="avatar">
                 <img *ngIf="imgTemp" [src]="imgTemp" class="avatar">
                 <br>
                 
                 <div class="row">
-                    <div class="col" style="align-items: center;">
-                        <div class="imagenSeleccionada">
+                    <div class="col text-center" style="padding-right: 5px; align-items: center;">
+                        <!-- <div class="imagenSeleccionada">
                             <p>File: <span>{{hayImagen()}}</span></p>
-                        </div>
+                        </div> -->
 
                         <div style="justify-items: center;">
                             <label for="files" class="files">

@@ -181,9 +181,11 @@
                             <li><a routerLink="/dashboard/accountSettings"><i class="ti-settings"></i> &nbsp;&nbsp;Account Settings</a></li>
                             <li role="separator" class="divider"></li>
                             <li>
-                                <a (click)="logout()" class="cursor">
-                                    <i class="fa fa-power-off"></i> 
-                                    &nbsp;&nbsp;Logout 
+                                <a routerLink="/login" (click)="removeToken()" class="cursor">
+                                    <i class="fa fa-power-off text-danger"></i>
+                                    <span class="text-danger">
+                                        &nbsp;&nbsp;Logout 
+                                    </span>
                                 </a>
                             </li>
                         </ul>

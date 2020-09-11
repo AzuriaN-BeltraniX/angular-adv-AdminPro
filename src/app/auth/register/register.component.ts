@@ -14,8 +14,8 @@ export class RegisterComponent {
   public formSubmitted = false;
 
   public registerForm = this.formBuilder.group({
-    nombre: ['AzuriaN BeltraniX', [Validators.required, Validators.minLength(3)]],
-    email: ['adm3729@azurianbeltranix.com', [Validators.required, Validators.email]],
+    nombre: ['test', [Validators.required, Validators.minLength(3)]],
+    email: ['@test.com', [Validators.required, Validators.email]],
     password: ['123456789', [Validators.required, Validators.minLength(8)]],
     password2: ['123456789', [Validators.required, Validators.minLength(8)]],
     terminos: [true, Validators.required]

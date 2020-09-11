@@ -1,13 +1,16 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, map, catchError } from "rxjs/operators";
 import { Router } from '@angular/router';
+
+import { tap, map, catchError, delay } from "rxjs/operators";
 import { Observable, of } from 'rxjs';
 
 import { environment } from '../../environments/environment.prod';
 
 import { RegisterForm } from '../interfaces/registerForm.interfaces';
 import { LoginForm } from '../interfaces/loginForm.interface';
+import { CargarUsuario } from '../interfaces/cargar-usuarios.interface';
+
 import { Usuario } from '../models/usuario.model';
 
 // Define una variable que tiene como valor el url para las peticiones:
@@ -34,7 +37,18 @@ export class UsuarioService {
     return localStorage.getItem('token') || '';
   }
   get userID(): string {
+    // console.log('getUserID Service', this.usuario);
     return this.usuario.userID || '';
+  }
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    }
+  }
+  get role() {
+    return this.usuario.role;
   }
 
   googleInit() {
@@ -67,9 +81,9 @@ export class UsuarioService {
       }
     }).pipe(
       map( (resp: any) => {
-        const { email, google, nombre, role, img = '', userId} = resp.usuario;
-        this.usuario = new Usuario(nombre, email, '', img, google, role, userId);
         // console.log(resp);
+        const { email, google, nombre, role, img = '', userID} = resp.usuario;
+        this.usuario = new Usuario(nombre, email, '', img, google, role, userID);
         localStorage.setItem('token', resp.token);
         return true;
       }),
@@ -89,16 +103,12 @@ export class UsuarioService {
   }
 
   actualizarPerfil(data: {email: string, nombre: string, role: string}) {
-    data = {
-      ...data,
-      role: this.usuario.role
-    };
+    // data = {
+    //   ...data,
+    //   role: this.usuario.role
+    // };
 
-    return this.http.put(`${base_url}/users/${this.userID}`, data, {
-      headers: {
-        'x-token': this.token
-      }
-    });
+    return this.http.put(`${base_url}/users/${this.userID}`, data, this.headers);
   }
 
   login(formData: LoginForm) {
@@ -106,7 +116,6 @@ export class UsuarioService {
     return this.http.post(`${base_url}/login`, formData)
       .pipe(
         tap((resp: any) => {
-          // console.log(resp)
           localStorage.setItem('token', resp.token)
         })
       )
@@ -121,6 +130,39 @@ export class UsuarioService {
           localStorage.setItem('token', resp.token )
         })
       );
+  }
+
+  cargarUsuario(desde: number = 0) {
+    const url = `${base_url}/users?desde=${desde}`;
+    return this.http.get<CargarUsuario>(url, this.headers)
+      .pipe(
+        // delay(750),
+        map(resp => {
+          // console.log(resp);
+          const usuarios = resp.usuarios.map(
+            user => new Usuario(user.nombre, user.email, '', user.img, user.google, user.role, user.userID)
+          );
+          
+          return {
+            total: resp.total,
+            usuarios
+          };
+        })
+      )
+  }
+
+  eliminarUsuario(usuario: Usuario) {
+    // console.log('eliminando');
+    console.log(usuario);
+    
+    const url = `${base_url}/users/${usuario.userID}`;
+    return this.http.delete(url, this.headers);
+  }
+
+  guardarUsuario(usuario: Usuario) {
+    // console.log(usuario);
+    
+    return this.http.put(`${base_url}/users/${usuario.userID}`, usuario, this.headers);
   }
 
 }

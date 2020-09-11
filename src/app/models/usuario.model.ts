@@ -13,13 +13,17 @@ export class Usuario {
         public userID?: string
     ) {}
 
+    imrpimirUsuario() {
+        console.log(this.nombre);
+    }
+
     get imagenUrl() {
         // /upload/users/noImage
-        if (this.img.includes('https')) {
+        if(!this.img) {
+            return `${base_url}/upload/users/noImage`;
+        } else if (this.img.includes('https')) {
             return this.img;
-        }
-
-        if (this.img) {
+        } else if (this.img) {
             return `${base_url}/upload/users/${this.img}`;
         } else {
             return `${base_url}/upload/users/noImage`;

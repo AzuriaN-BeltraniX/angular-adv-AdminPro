@@ -1,0 +1,38 @@
+.greyColor {
+    color: #99abb4ab;
+    font-weight: 300;
+}
+.font-w600 {
+    font-weight: 600;
+}
+
+.marginShadow {
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 0;
+    transition: .2s ease-out;
+}
+.marginShadow:hover {
+    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 2px;
+    transition: .2s ease;
+}
+
+.adminBorder {
+    border: solid 4px #ffb22b;
+    box-shadow: 0px 0px 0px 0px #ffb12b50;
+    position: relative;
+    bottom: 0;
+    transition: .2s ease-out;
+}
+.adminShadow:hover {
+    box-shadow: 0px 0px 20px 4px #ffb12b50;
+    position: relative;
+    bottom: 2px;
+    transition: .2s ease;
+}
+
+.focusNone:focus {
+    border: none !important;
+}
