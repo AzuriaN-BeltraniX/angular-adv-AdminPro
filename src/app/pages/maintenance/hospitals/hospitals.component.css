@@ -1,0 +1,12 @@
+.marginShadow {
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 0;
+    transition: .2s ease-out;
+}
+.marginShadow:hover {
+    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 2px;
+    transition: .2s ease;
+}

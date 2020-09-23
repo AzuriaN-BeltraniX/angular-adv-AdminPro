@@ -30,7 +30,7 @@ export class FileUploadsService {
 
       const data = await resp.json();
 
-      console.log(data);
+      // console.log(data);
       
 
       if (data.ok) {

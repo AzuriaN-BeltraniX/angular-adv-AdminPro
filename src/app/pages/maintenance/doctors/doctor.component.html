@@ -1,0 +1,120 @@
+<div class="row">
+    <!-- Tarjeta de Médico en caso de un médico seleccionado -->
+    <div *ngIf="medicoForm" class="col-lg-4 col-xlg-3 col-md-5">
+        <div class="d-inline-flex">
+            <h3 class="card-title" style="opacity: 75%;">Doctor Card</h3>
+            <hr class="decoLine">
+        </div>
+        <div class="card">
+            <img class="card-img blur" src="../assets/images/background/socialbg.jpg" alt="Card image">
+            <div class="card-img-overlay card-inverse social-profile d-flex rounded">
+                <div class="align-self-center" style="margin: auto;">
+                    <div id="imgProfile" (click)="abrirModal()">
+                    </div>
+                    <br><br>
+                        
+                    <h4 id="nameProfile" class="card-title"></h4>
+                    
+                    <hr style="border-top: 1px solid rgba(255, 255, 255, 0.5) !important;">
+                    <br>
+                    <div class="align-self-center">
+                        <span class="tagHospital p-2">
+                            <i  class="fa fa-plus-circle text-danger"
+                                style="padding-right: 5px; margin-top: 3px;"></i>
+                            <span id="nameHospital" class="hospitalName"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario con Medico Existente -->
+    <div *ngIf="medicoSeleccionado" class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="d-inline-flex">
+            <h3 class="card-title" style="opacity: 75%;">Information</h3>
+            <hr class="decoLine2">
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit or register a Doctor</h4>
+                <form class="form p-t-20" [formGroup]="medicoForm">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input  type="text"
+                                    class="form-control"
+                                    id="exampleInputuname"
+                                    placeholder="Doctor's name"
+                                    formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hospital</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-plus-circle"></i></div>
+                            <select class="form-control" formControlName="hospital">
+                                <option value="">Select a hospital</option>
+                                <option *ngFor="let hospital of hospitales"
+                                        [value]="hospital._id">{{hospital.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button (click)="actualizarMedico()" [disabled]="medicoForm.invalid"
+                            class="btn btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-refresh" style="padding-right: 5px; margin-top: 3px; opacity: 75%;"></i>
+                        Update
+                    </button>
+                    <button routerLink="/maintenance/doctors" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario para crear un nuevo médico -->
+    <div *ngIf="!medicoSeleccionado" class="col-lg-8 col-xlg-9 col-md-7">
+        <div class="d-inline-flex">
+            <h3 class="card-title" style="opacity: 75%;">New Doctor</h3>
+            <hr class="decoLine2">
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Register a Doctor</h4>
+                <h6 class="card-subtitle">Type the new name of the doctor and the assigned hospital</h6>
+                <form class="form p-t-20" [formGroup]="medicoForm">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input  type="text"
+                                    class="form-control"
+                                    id="exampleInputuname"
+                                    placeholder="Doctor's name"
+                                    formControlName="nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Hospital</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-plus-circle"></i></div>
+                            <select class="form-control" formControlName="hospital">
+                                <option value="">Select a hospital</option>
+                                <option *ngFor="let hospital of hospitales"
+                                        [value]="hospital._id">{{hospital.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button (click)="guardarMedico()" [disabled]="medicoForm.invalid"
+                            class="btn btn-warning waves-effect waves-light m-r-10">
+                        <i class="fa fa-save" style="padding-right: 5px; margin-top: 3px; opacity: 75%;"></i>
+                        Save
+                    </button>
+                    <button routerLink="/maintenance/doctors" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<!-- Search -->
+<div class="row">
+    <div class="col-12">
+        <div class="card" style="background-color: #242a33; border-radius: 3px;">
+            <div class="card-body">
+                <input  type="text"
+                        class="form-control"
+                        placeholder="Search Doctors..."
+                        style="background-color: #3c4553; color: whitesmoke;"
+                        #txtTermino
+                        (keyup)="buscar(txtTermino.value)">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Loading -->
+<div *ngIf="loading" class="row  animated fadeIn">
+    <div class="col" style="display: inline; align-items: center;">
+        <div class="alert alert-info border-blue text-center">
+            <h4 class="alert-heading">
+                <i class="fa fa-refresh fa-spin" style="opacity: 50%; margin-right: 5px;"></i>
+                Loading . . .
+            </h4>
+            <p class="mb-0" style="opacity: 50%;">Pleace, wait...</p>
+        </div>
+    </div>
+</div>
+
+<!-- Results -->
+<div *ngIf="!loading" class="col-12 animated fadeIn">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">
+                Doctors
+                <span class="label label-rouded label-themecolor pull-right p-2 m-1">
+                    <span style="opacity: 50%; padding-right: 8px;">Registered: </span>
+                    <span  style="font-weight: 600;">{{medicos.length}}</span>
+                </span>
+
+                <button class="btn btn-success pull-right" routerLink="/maintenance/doctor/new"
+                        style="padding: 3px 10px !important; margin-top: 4px; margin-right: 10px;">
+                    <i class="fa fa-plus" style="padding-right: 5px; margin-top: 3px; opacity: 50%;"></i>
+                <span style="font-size: 15px;">New Doctor</span>
+        </button>
+            </h4>
+            <h6 class="card-subtitle">All registered doctors in the app</h6>
+            <div class="table-responsive">
+                <table class="table table-bordered color-bordered-table muted-bordered-table">
+                    <thead>
+                        <tr>
+                            <th><span style="color: rgb(221, 221, 221);">Avatar</span></th>
+                            <th>Name</th>
+                            <th>Hospital</th>
+                            <th class="text-nowrap">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let medico of medicos">
+                        <tr>
+                            <td class="txt-center text-center" style="width: 100px;">
+                                <img [src]="medico.img | image:'doctors'"
+                                     [alt]="medico.nombre"
+                                     class="avatar cursor marginShadow"
+                                     (click)="abrirModal(medico)">
+                            </td>
+                            <td class="txt-center">{{medico.nombre}}</td>
+                            <td class="txt-center text-center" style="width: 250px;">
+                                <span class="label label-rouded label-light-success p-2 m-1">
+                                    <i  class="fa fa-plus-circle text-danger"
+                                        style="padding-right: 5px; margin-top: 3px; opacity: 60%;"></i>
+                                    <span  style="font-weight: 600;">{{medico.hospital.nombre}}</span>
+                                </span>
+                            </td>
+                            <td class="text-nowrap text-center txt-center" style="width: 100px;">
+                                <a [routerLink]="[ '/maintenance/doctor', medico._id ]" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i>
+                                </a>
+                                <a (click)="borrarMedico(medico)" data-toggle="tooltip" data-original-title="Delete" class="cursor">
+                                    <i class="fa fa-close text-danger"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- <button class="btn btn-secondary"><< Previous</button>
+                &nbsp;
+                <button class="btn btn-secondary">Next >></button> -->
+            </div>
+        </div>
+    </div>
+</div>

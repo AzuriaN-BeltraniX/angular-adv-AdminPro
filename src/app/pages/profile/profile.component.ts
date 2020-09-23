@@ -32,7 +32,7 @@ export class ProfileComponent implements OnInit {
       email: [this.usuario.email, [Validators.required, Validators.email]],
       role: [this.usuario.role],
     });
-    console.log(this.profileForm);
+    // console.log(this.profileForm);
     
   }
 
