@@ -11,14 +11,14 @@ import { Usuario } from 'src/app/models/usuario.model';
 })
 export class SidebarComponent implements OnInit {
 
-  public menuItems: any[];
+  // public menuItems: any[];
   // public imgURL = '';
   public usuario: Usuario;
 
-  constructor(private sidebarService: SidebarService,
+  constructor(public sidebarService: SidebarService,
               private usuarioService: UsuarioService) {
 
-    this.menuItems = sidebarService.menu;
+    // this.menuItems = sidebarService.menu;
     this.usuario = usuarioService.usuario;
     // this.imgURL = usuarioService.usuario.imagenUrl;
     // console.log(this.menuItems);
@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
 
   removeToken() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
   }
 
 }

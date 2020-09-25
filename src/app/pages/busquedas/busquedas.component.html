@@ -1,0 +1,147 @@
+<div class="row">
+    <!-- Users -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Users
+                    <span *ngIf="usuarios.length > 0" class="label label-rouded label-themecolor pull-right p-2 m-1">
+                        <span style="opacity: 50%; padding-right: 8px;">Results: </span>
+                        <span  style="font-weight: 600;">{{usuarios.length}}</span>
+                    </span>
+                </h4>
+                <h6 class="card-subtitle">All users regitered in the app</h6>
+                <div *ngIf="usuarios.length === 0" class="text-center">
+                    <div class="alert alert-warning" style="display: inline-flex;">
+                        <i class="fa fa-warning text-warning" style="padding-top: 4px; padding-right: 10px;"></i>
+                        <p class="mb-0">There are no results with this search term...</p>
+                    </div>
+                </div>
+                <div *ngIf="usuarios.length > 0 " class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="greyColor" style="width: 10px;">Avatar</th>
+                                <th>User</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let usuario of usuarios">
+                                <td class="txt-center text-center">
+                                    <img [src]="usuario.img | image:'users'"
+                                         class="avatar marginShadow"
+                                         *ngIf="usuario.role === 'USER_ROLE'">
+                                    <img [src]="usuario.img | image:'users'"
+                                         class="avatar adminBorder adminShadow"
+                                         *ngIf="usuario.role === 'ADMIN_ROLE'">
+                                </td>
+                                <td class="txt-center">
+                                    <span *ngIf="usuario.role === 'USER_ROLE'">
+                                        {{usuario.nombre}}
+                                    </span>
+                                    <span *ngIf="usuario.role === 'ADMIN_ROLE'">
+                                        <i class="fa fa-star p-1 text-warning" style="padding-right: 3px; opacity: 75%;"></i>
+                                        <span style="padding-left: 5px; font-size: 15px;">{{usuario.nombre}}</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hospitals -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Hospitals
+                    <span *ngIf="hospitales.length > 0" class="label label-rouded label-themecolor pull-right p-2 m-1">
+                        <span style="opacity: 50%; padding-right: 8px;">Results: </span>
+                        <span  style="font-weight: 600;">{{hospitales.length}}</span>
+                    </span>
+                </h4>
+                <h6 class="card-subtitle">All hospitals regitered in the app</h6>
+                <div *ngIf="hospitales.length === 0" class="text-center">
+                    <div class="alert alert-warning" style="display: inline-flex;">
+                        <i class="fa fa-warning text-warning" style="padding-top: 4px; padding-right: 10px;"></i>
+                        <p class="mb-0">There are no results with this search term...</p>
+                    </div>
+                </div>
+                <div *ngIf="hospitales.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="greyColor" style="width: 10px;">Avatar</th>
+                                <th>Hospital</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let hospital of hospitales">
+                                <td class="txt-center text-center">
+                                    <!-- {{hospital.img | image:'hospitals'}} -->
+                                    <img [src]="hospital.img | image:'hospitals'"
+                                         [alt]="hospital.nombre"
+                                         class="avatar cursor marginShadow">
+                                </td>
+                                <td>{{hospital.nombre}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Doctors -->
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">
+                    Doctors
+                    <span *ngIf="medicos.length > 0" class="label label-rouded label-themecolor pull-right p-2 m-1">
+                        <span style="opacity: 50%; padding-right: 8px;">Results: </span>
+                        <span  style="font-weight: 600;">{{medicos.length}}</span>
+                    </span>
+                </h4>
+                <h6 class="card-subtitle">All doctors regitered in the app</h6>
+                <div *ngIf="medicos.length === 0" class="text-center">
+                    <div class="alert alert-warning" style="display: inline-flex;">
+                        <i class="fa fa-warning text-warning" style="padding-top: 4px; padding-right: 10px;"></i>
+                        <p class="mb-0">There are no results with this search term...</p>
+                    </div>
+                </div>
+                <div *ngIf="medicos.length > 0" class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="greyColor" style="width: 10px;">Avatar</th>
+                                <th>Doctor</th>
+                                <th>Hospital</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let medico of medicos">
+                                <td class="txt-center text-center">
+                                    <img [src]="medico.img | image:'doctors'"
+                                         [alt]="medico.nombre"
+                                         class="avatar cursor marginShadow">
+                                </td>
+                                <td class="txt-center">{{medico.nombre}}</td>
+                                <td class="txt-center">
+                                    <span class="label label-rouded label-light-success p-2 m-1">
+                                        <i  class="fa fa-plus-circle text-danger"
+                                            style="padding-right: 5px; margin-top: 3px; opacity: 60%;"></i>
+                                        <span  style="font-weight: 600;">{{medico.hospital.nombre}}</span>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

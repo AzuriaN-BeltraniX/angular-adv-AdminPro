@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from "rxjs/operators";
 
+import { environment } from '../../environments/environment.prod';
+
 import { Usuario } from '../models/usuario.model';
 import { Hospital } from '../models/hospitals.model';
-
-import { environment } from '../../environments/environment.prod';
+import { Medico } from '../models/doctors.model';
 
 const base_url = environment.base_url
 
@@ -35,8 +36,13 @@ export class BusquedasService {
   private transformarHospitales(resultados: any[]): Hospital[] {
     return resultados;
   }
-  private transformarDoctores(resultados: any[]): Hospital[] {
+  private transformarDoctores(resultados: any[]): Medico[] {
     return resultados;
+  }
+
+  busquedaGlobal(termino: string) {
+    const url = `${base_url}/search/all/${termino}`;
+    return this.http.get<any[]>(url, this.headers);
   }
 
   buscar(tipo: 'users'|'doctors'|'hospitals', termino: string) {

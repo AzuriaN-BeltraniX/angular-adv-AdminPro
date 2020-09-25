@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
 
     this.usuarioService.login(this.loginForm.value)
       .subscribe(resp => {
-        // console.log(resp);
+        console.log(resp);
 
         // Si el ususario desea recordar su email, entonces:
         if (this.loginForm.get('remember').value) {

@@ -60,7 +60,7 @@ export class ProfileComponent implements OnInit {
           position: 'center',
           icon: 'error',
           title: 'Oh no...',
-          text: err.error,
+          text: err.error.msg,
           showConfirmButton: false,
           timer: 1750
         });

@@ -1,0 +1,42 @@
+.greyColor {
+    color: #99abb4ab;
+    font-weight: 400;
+}
+
+.tagHospital {
+    background-color: #c5c5c540;
+    border-radius: 200px;
+}
+.hospitalName {
+    font-weight: 500;
+    font-size: 13px;
+    color: white;
+    opacity: 75%;
+}
+
+.marginShadow {
+    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 0;
+    transition: .2s ease-out;
+}
+.marginShadow:hover {
+    box-shadow: 0px 0px 20px 4px rgba(0,0,0,0.15);
+    position: relative;
+    bottom: 2px;
+    transition: .2s ease;
+}
+
+.adminBorder {
+    border: solid 4px #ffb22b;
+    box-shadow: 0px 0px 0px 0px #ffb12b50;
+    position: relative;
+    bottom: 0;
+    transition: .2s ease-out;
+}
+.adminShadow:hover {
+    box-shadow: 0px 0px 20px 4px #ffb12b50;
+    position: relative;
+    bottom: 2px;
+    transition: .2s ease;
+}
